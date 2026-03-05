@@ -1,9 +1,8 @@
-import {
+import type {
 	ISupplyDataFunctions,
 	INodeType,
 	INodeTypeDescription,
 	SupplyData,
-	NodeConnectionType,
 } from 'n8n-workflow';
 
 import { GoogleGenerativeAIEmbeddings } from '@langchain/google-genai';
@@ -42,10 +41,10 @@ export class EmbeddingsGoogleGeminiExtended implements INodeType {
 		// This is a sub-node, it has no inputs
 		inputs: [],
 		// And it supplies data to the root node
-		outputs: [NodeConnectionType.AiEmbedding],
+		outputs: ['ai_embedding'],
 		outputNames: ['Embeddings'],
 		properties: [
-			getConnectionHintNoticeField([NodeConnectionType.AiVectorStore]),
+			getConnectionHintNoticeField(['ai_vectorStore']),
 			{
 				displayName: 'Model Name',
 				name: 'model',

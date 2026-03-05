@@ -1,7 +1,7 @@
-import { INodeProperties, NodeConnectionType } from 'n8n-workflow';
+import type { INodeProperties } from 'n8n-workflow';
 
 export const getConnectionHintNoticeField = (
-	_connectionTypes: NodeConnectionType[],
+	_connectionTypes: string[],
 ): INodeProperties => {
 	return {
 		displayName: '',
