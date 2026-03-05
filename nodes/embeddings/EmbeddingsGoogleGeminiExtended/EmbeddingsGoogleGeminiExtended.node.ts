@@ -56,13 +56,6 @@ export class EmbeddingsGoogleGeminiExtended implements INodeType {
 				placeholder: 'e.g. text-embedding-004, embedding-001, gemini-embedding-001',
 			},
 			{
-				displayName: 'Output Dimensions',
-				name: 'outputDimensions',
-				type: 'number',
-				default: 0,
-				description: 'The number of dimensions for the output embeddings. Set to 0 to use the model default. Only supported by certain models like text-embedding-004 and gemini-embedding-001.',
-			},
-			{
 				displayName: 'Options',
 				name: 'options',
 				placeholder: 'Add Option',
@@ -70,6 +63,13 @@ export class EmbeddingsGoogleGeminiExtended implements INodeType {
 				type: 'collection',
 				default: {},
 				options: [
+					{
+						displayName: 'Output Dimensions',
+						name: 'outputDimensions',
+						type: 'number',
+						default: 0,
+						description: 'The number of dimensions for the output embeddings. Set to 0 to use the model default. Only supported by certain models like text-embedding-004 and gemini-embedding-001.',
+					},
 					{
 						displayName: 'Task Type',
 						name: 'taskType',
@@ -146,13 +146,14 @@ export class EmbeddingsGoogleGeminiExtended implements INodeType {
 		const credentials = await this.getCredentials('googlePalmApi');
 		
 		const modelName = this.getNodeParameter('model', 0) as string;
-		const outputDimensions = this.getNodeParameter('outputDimensions', 0, 0) as number;
 		const options = this.getNodeParameter('options', 0, {}) as {
+			outputDimensions?: number;
 			taskType?: string;
 			title?: string;
 			stripNewLines?: boolean;
 			batchSize?: number;
 		};
+		const outputDimensions = options.outputDimensions ?? 0;
 
 		// Create a custom embeddings class that extends GoogleGenerativeAIEmbeddings
 		class GoogleGeminiEmbeddingsExtended extends GoogleGenerativeAIEmbeddings {

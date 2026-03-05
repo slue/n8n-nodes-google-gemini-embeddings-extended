@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-google-gemini-embeddings-extended",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "n8n community sub-node for Google Gemini Embeddings with extended features like output dimensions support",
   "keywords": [
     "n8n-community-node-package",
@@ -13,14 +13,14 @@
     "sub-node"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/danblah/n8n-nodes-google-gemini-embeddings-extended",
+  "homepage": "https://github.com/slue/n8n-nodes-google-gemini-embeddings-extended",
   "author": {
     "name": "Dan Blah",
     "email": "dan@blahs.life"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danblah/n8n-nodes-google-gemini-embeddings-extended.git"
+    "url": "git+https://github.com/slue/n8n-nodes-google-gemini-embeddings-extended.git"
   },
   "main": "index.js",
   "scripts": {
